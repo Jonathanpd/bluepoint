@@ -1,10 +1,11 @@
 const gulp = require('gulp');
 const sass = require('gulp-sass');
 const autoprefixer = require('gulp-autoprefixer');
-const browsersSync = require('browser-sync').create();
-const insert       = require('gulp-insert')              // used to add wordpress theme description to css
+const browserSync = require('browser-sync').create();
+const insert = require('gulp-insert'); // used to add wordpress theme description to css
+const reload = browserSync.reload;
 
-//Variaveis
+//Variable
 var themeDescription = [
     '@charset "UTF-8";',
     '/*',
@@ -45,6 +46,7 @@ function compilaSass() {
     }))
     .pipe(insert.prepend(themeDescription))
     .pipe(gulp.dest(paths.dist))
+    .pipe(browserSync.stream());
 }
 
 gulp.task('sass', compilaSass);
@@ -52,19 +54,18 @@ gulp.task('sass', compilaSass);
 //BrowserSync
 function browser() {
     browserSync.init({
-        server: {
-            baseDir: "./"
-        }
+        proxy: 'http://localhost/bluepoint/'
     });
 }
 
 gulp.task('browser-sync', browser);
 
 
-//Watch
+//Watch and Task Default
 function watch() {
     gulp.watch('css/scss/*.scss', compilaSass);
 }
 
-//Task Default
-gulp.task('default', watch);
+gulp.task('watch', watch);
+
+gulp.task('default', gulp.parallel('watch','browser-sync'));
