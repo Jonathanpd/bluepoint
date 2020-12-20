@@ -1,0 +1,26 @@
+{
+  "name": "bluepoint-theme",
+  "version": "1.0.0",
+  "description": "Site institucional",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "gulp-sass": "^4.1.0",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^7.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jonathanpd/bluepoint.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jonathanpd/bluepoint/issues"
+  },
+  "homepage": "https://github.com/Jonathanpd/bluepoint#readme"
+}
