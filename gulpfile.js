@@ -1,6 +1,7 @@
 const gulp = require('gulp');
 const sass = require('gulp-sass');
 const autoprefixer = require('gulp-autoprefixer');
+const browsersSync = require('browser-sync').create();
 
 function compilaSass() {
     return gulp
@@ -16,3 +17,17 @@ function compilaSass() {
 }
 
 gulp.task('sass', compilaSass);
+
+function browser() {
+    browserSync.init({
+        server: {
+            baseDir: "./"
+        }
+    });
+}
+
+function watch() {
+    gulp.watch('css/scss/*.scss', compilaSass);
+}
+
+gulp.task('default', watch);
