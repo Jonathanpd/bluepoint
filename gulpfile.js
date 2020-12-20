@@ -26,6 +26,8 @@ function browser() {
     });
 }
 
+gulp.task('browser-sync', browser);
+
 function watch() {
     gulp.watch('css/scss/*.scss', compilaSass);
 }
