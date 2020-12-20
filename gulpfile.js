@@ -19,15 +19,7 @@ var themeDescription = [
     'Text Domain: bluepoint',
     '*/',
     '',
-
-/*
-
-
-
-
-*/
-
-  ].join('\n')
+].join('\n')
 
 var paths = {
     styles:   './scss/**/*',
@@ -40,7 +32,7 @@ var paths = {
 }
 //
 
-
+//Style CSS
 function compilaSass() {
     return gulp
     .src('css/scss/*.scss')
@@ -51,13 +43,13 @@ function compilaSass() {
         browsers: ['last 10 versions'],
         cascade: false
     }))
-    //.pipe(rename('style.css'))
     .pipe(insert.prepend(themeDescription))
     .pipe(gulp.dest(paths.dist))
 }
 
 gulp.task('sass', compilaSass);
 
+//BrowserSync
 function browser() {
     browserSync.init({
         server: {
@@ -68,8 +60,11 @@ function browser() {
 
 gulp.task('browser-sync', browser);
 
+
+//Watch
 function watch() {
     gulp.watch('css/scss/*.scss', compilaSass);
 }
 
+//Task Default
 gulp.task('default', watch);
