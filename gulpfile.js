@@ -6,6 +6,7 @@ const insert       = require('gulp-insert')              // used to add wordpres
 
 //Variaveis
 var themeDescription = [
+    '@charset "UTF-8";',
     '/*',
     'Theme Name: Blue Point',
     'Author: Jonathan Produz Digital',
